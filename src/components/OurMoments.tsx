@@ -1,82 +1,78 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
-import { staggerContainer, fadeUp, imageReveal, slideLeft, slideRight } from '../lib/animations';
 
 export default function OurMoments() {
   return (
-    <section className="bg-ivory py-32 px-6">
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="text-center mb-16"
-      >
-        <motion.h2 variants={fadeUp} className="font-handwriting text-5xl text-wine-dark mb-4">Our Moments</motion.h2>
-        <motion.p variants={fadeUp} className="font-sans text-[10px] tracking-[0.3em] uppercase text-wedding-text/60">Khoảnh Khắc Đáng Nhớ</motion.p>
-      </motion.div>
-
-      <div className="flex flex-col gap-8 max-w-md mx-auto">
-        {/* Row 1 */}
-        <div className="flex gap-4 h-64">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
-            className="flex-1 overflow-hidden"
-          >
-            <img 
-              src={wedding.photos.photo1} alt="Moment 1" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              style={{ objectPosition: wedding.photos.position.moment1 }}
-              loading="lazy" decoding="async"
-            />
-          </motion.div>
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
-            className="flex-1 overflow-hidden"
-          >
-            <img 
-              src={wedding.photos.photo2} alt="Moment 2" 
-              className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
-              style={{ objectPosition: wedding.photos.position.moment2 }}
-              loading="lazy" decoding="async"
-            />
-          </motion.div>
-        </div>
-
-        {/* Row 2 - Full width */}
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal} 
-          className="h-56 overflow-hidden"
+    <section className="py-16 px-6">
+      <div className="max-w-md mx-auto text-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.7 }}
+          className="font-script text-5xl text-white mb-10"
         >
-          <img 
-            src={wedding.photos.photo2} alt="Moment 3" 
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-            style={{ objectPosition: wedding.photos.position.moment3 }}
-            loading="lazy" decoding="async"
-          />
-        </motion.div>
+          The Album Of Love
+        </motion.h2>
 
-        {/* Row 3 */}
-        <div className="flex gap-4 h-72">
+        <div className="grid grid-cols-2 gap-4">
           <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
-            className="w-2/3 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="aspect-[3/4]"
           >
             <img 
-              src={wedding.photos.photo1} alt="Moment 4" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              style={{ objectPosition: wedding.photos.position.moment4 }}
+              src={wedding.photos.photo1} 
+              alt="Album 1" 
+              className="w-full h-full object-cover rounded-md shadow-2xl"
+              style={{ objectPosition: "50% 20%" }}
               loading="lazy" decoding="async"
             />
           </motion.div>
           <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
-            className="w-1/3 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="aspect-[3/4]"
           >
             <img 
-              src={wedding.photos.photo2} alt="Moment 5" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              style={{ objectPosition: wedding.photos.position.moment5 }}
+              src={wedding.photos.photo2} 
+              alt="Album 2" 
+              className="w-full h-full object-cover rounded-md shadow-2xl"
+              style={{ objectPosition: "50% 20%" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="aspect-[3/4]"
+          >
+            <img 
+              src={wedding.photos.photo2} 
+              alt="Album 3" 
+              className="w-full h-full object-cover grayscale-[20%] rounded-md shadow-2xl"
+              style={{ objectPosition: "60% 20%" }}
+              loading="lazy" decoding="async"
+            />
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="aspect-[3/4]"
+          >
+            <img 
+              src={wedding.photos.photo1} 
+              alt="Album 4" 
+              className="w-full h-full object-cover rounded-md shadow-2xl"
+              style={{ objectPosition: "40% 30%" }}
               loading="lazy" decoding="async"
             />
           </motion.div>

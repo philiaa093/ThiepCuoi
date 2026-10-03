@@ -1,86 +1,52 @@
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
 import { wedding } from '../data/wedding';
-import { staggerContainer, staggerText } from '../lib/animations';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
-      {/* Background with slow zoom out */}
-      <motion.div
-        initial={{ scale: 1.04 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 4.5, ease: "easeOut" }}
-        className="absolute inset-0 w-full h-full will-change-transform"
-      >
-        <img 
-          src={wedding.photos.photo2}
-          alt="Wedding Couple" 
-          className="w-full h-full object-cover"
-          style={{ objectPosition: wedding.photos.position.hero }}
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/35"></div>
-      </motion.div>
+    <>
+      <section className="relative w-full h-[85vh] flex flex-col items-center justify-center px-6 pt-12 pb-6">
+        <div className="relative w-full max-w-[320px] aspect-[3/4] rounded-t-full rounded-b-xl overflow-hidden shadow-2xl">
+          <img 
+            src={wedding.photos.photo2}
+            alt="Wedding Couple" 
+            className="w-full h-full object-cover"
+            style={{ objectPosition: wedding.photos.position.hero }}
+            fetchPriority="high"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+          
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 mt-8">
+            <h2 className="text-[4rem] leading-none font-serif text-white mb-2 drop-shadow-md">
+              14.06
+            </h2>
+            <div className="font-script text-4xl text-white mb-3 drop-shadow-md">
+              {wedding.groom.shortName} & {wedding.bride.shortName}
+            </div>
+            <div className="text-[9px] uppercase tracking-[0.25em] text-white/90 drop-shadow-md font-sans">
+              WELCOME TO OUR WEDDING
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 flex flex-col items-center text-wedding-white px-6 text-center w-full mt-24"
-      >
-        <motion.p 
-          variants={staggerText}
-          className="font-handwriting text-4xl md:text-5xl mb-6 text-ivory/90"
-        >
-          Save the Date
-        </motion.p>
-        
-        <motion.h1 
-          variants={staggerText}
-          className="font-serif text-4xl md:text-5xl mb-6 tracking-widest leading-tight"
-        >
-          {wedding.groom.name.toUpperCase()}
-          <br/>
-          <span className="text-2xl my-3 block font-light text-wedding-gold/80">&</span>
-          {wedding.bride.name.toUpperCase()}
-        </motion.h1>
+      {/* Save the date section right below */}
+      <section className="relative w-full flex flex-col items-center pb-16 px-6">
+        <div className="flex flex-col items-center text-center space-y-3 mb-10">
+          <h3 className="font-serif text-[10px] tracking-[0.2em] text-white uppercase border-y border-white/30 py-2">
+            QUYẾT ĐỊNH BÊN NHAU TRỌN ĐỜI
+          </h3>
+          <p className="font-script text-4xl text-white pt-2">Save the date</p>
+          <p className="font-serif text-lg tracking-[0.2em] text-white">14 . 06 . 2026</p>
+        </div>
 
-        <motion.div 
-          variants={staggerText}
-          className="font-sans text-lg tracking-[0.3em] mb-12 flex items-center justify-center gap-4"
-        >
-          <span>{wedding.mainDate.substring(8,10)}</span>
-          <span className="w-1 h-1 rounded-full bg-wedding-gold"></span>
-          <span>{wedding.mainDate.substring(5,7)}</span>
-          <span className="w-1 h-1 rounded-full bg-wedding-gold"></span>
-          <span>{wedding.mainDate.substring(0,4)}</span>
-        </motion.div>
-
-        <motion.div 
-          variants={staggerText}
-          className="w-[1px] h-12 bg-gradient-to-b from-wedding-gold/50 to-transparent mb-8"
-        ></motion.div>
-
-        <motion.p 
-          variants={staggerText}
-          className="font-sans text-sm font-light max-w-[280px] leading-loose opacity-90 tracking-wide"
-        >
-          Trân trọng kính mời bạn<br/>
-          đến chung vui trong ngày hạnh phúc<br/>
-          của chúng mình.
-        </motion.p>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-wedding-white/70 flex flex-col items-center"
-      >
-        <span className="font-sans text-[10px] tracking-widest uppercase mb-2">Cuộn</span>
-        <ChevronDown className="w-5 h-5" />
-      </motion.div>
-    </section>
+        <div className="w-full max-w-[280px] aspect-[3/4] relative">
+          <img 
+            src={wedding.photos.photo1}
+            alt="Couple secondary" 
+            className="w-full h-full object-cover rounded-xl shadow-2xl"
+            style={{ objectPosition: wedding.photos.position.saveTheDate }}
+          />
+        </div>
+      </section>
+    </>
   );
 }

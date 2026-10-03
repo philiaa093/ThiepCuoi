@@ -1,141 +1,58 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { staggerContainer, fadeUp } from '../lib/animations';
+import { motion } from 'framer-motion';
 
 export default function RSVP() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1500);
-  };
-
   return (
-    <section className="bg-ivory py-32 px-6">
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-md mx-auto text-center"
-      >
-        <motion.h2 variants={fadeUp} className="font-serif text-3xl tracking-widest text-wine-dark mb-6 uppercase">Xác Nhận Tham Dự</motion.h2>
-        <motion.p variants={fadeUp} className="font-sans text-xs text-gray-500 mb-12 leading-relaxed max-w-[280px] mx-auto italic tracking-wider">
-          "Sự hiện diện của bạn<br/>
-          là niềm vui của chúng mình."
+    <section className="py-16 px-6">
+      <div className="max-w-md mx-auto text-center">
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="font-sans text-xs uppercase tracking-widest text-white/90 mb-10 leading-relaxed"
+        >
+          Hãy xác nhận sự có mặt của quý khách để gia đình chúng tôi chuẩn bị đón tiếp một cách chu đáo nhất. Trân trọng!
         </motion.p>
 
-        <motion.form variants={fadeUp} className="text-left space-y-8" onSubmit={handleSubmit}>
-          <div>
-            <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-wedding-text/70 mb-2">Họ và tên</label>
-            <input 
-              type="text" 
-              required
-              className="w-full border-b border-wine-red/20 bg-transparent py-2 focus:outline-none focus:border-wine-red transition-colors text-sm font-sans"
-              placeholder="Nhập tên của bạn..."
-            />
-          </div>
+        <motion.form 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="space-y-4 mb-8"
+        >
+          <input 
+            type="text" 
+            placeholder="Tên của bạn là gì?" 
+            className="w-full bg-transparent border border-white/50 rounded-full py-3 px-6 text-white placeholder:text-white/60 focus:outline-none focus:border-white text-center font-serif text-lg"
+          />
+          <input 
+            type="text" 
+            placeholder="Bạn là gì của Dâu Rể?" 
+            className="w-full bg-transparent border border-white/50 rounded-full py-3 px-6 text-white placeholder:text-white/60 focus:outline-none focus:border-white text-center font-serif text-lg"
+          />
+          <input 
+            type="text" 
+            placeholder="Gửi lời chúc đến Dâu Rể" 
+            className="w-full bg-transparent border border-white/50 rounded-full py-3 px-6 text-white placeholder:text-white/60 focus:outline-none focus:border-white text-center font-serif text-lg"
+          />
+          <select 
+            className="w-full bg-transparent border border-white/50 rounded-full py-3 px-6 text-white text-center font-serif text-lg focus:outline-none appearance-none"
+            style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1em top 50%', backgroundSize: '.65em auto' }}
+          >
+            <option value="" className="text-black">Bạn có tham dự không?</option>
+            <option value="yes" className="text-black">Có, chắc chắn rồi</option>
+            <option value="no" className="text-black">Tiếc quá, tôi không thể đến</option>
+          </select>
 
-          <div>
-            <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-wedding-text/70 mb-4">Bạn sẽ tham dự chứ?</label>
-            <div className="flex flex-col gap-3">
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center justify-center w-4 h-4">
-                  <input type="radio" name="attendance" value="yes" className="peer appearance-none w-4 h-4 border border-wine-red/50 rounded-full checked:border-wine-red transition-colors cursor-pointer" defaultChecked />
-                  <div className="absolute w-2 h-2 rounded-full bg-wine-red scale-0 peer-checked:scale-100 transition-transform"></div>
-                </div>
-                <span className="font-sans text-sm text-gray-700 group-hover:text-wine-dark transition-colors">Chắc chắn rồi!</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center justify-center w-4 h-4">
-                  <input type="radio" name="attendance" value="no" className="peer appearance-none w-4 h-4 border border-wine-red/50 rounded-full checked:border-wine-red transition-colors cursor-pointer" />
-                  <div className="absolute w-2 h-2 rounded-full bg-wine-red scale-0 peer-checked:scale-100 transition-transform"></div>
-                </div>
-                <span className="font-sans text-sm text-gray-700 group-hover:text-wine-dark transition-colors">Rất tiếc, tôi không thể tham dự.</span>
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-wedding-text/70 mb-4">Bạn tham dự tiệc:</label>
-            <div className="flex gap-8">
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center justify-center w-4 h-4">
-                  <input type="radio" name="party" value="groom" className="peer appearance-none w-4 h-4 border border-wine-red/50 rounded-full checked:border-wine-red transition-colors cursor-pointer" defaultChecked />
-                  <div className="absolute w-2 h-2 rounded-full bg-wine-red scale-0 peer-checked:scale-100 transition-transform"></div>
-                </div>
-                <span className="font-sans text-sm text-gray-700">Nhà trai</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center justify-center w-4 h-4">
-                  <input type="radio" name="party" value="bride" className="peer appearance-none w-4 h-4 border border-wine-red/50 rounded-full checked:border-wine-red transition-colors cursor-pointer" />
-                  <div className="absolute w-2 h-2 rounded-full bg-wine-red scale-0 peer-checked:scale-100 transition-transform"></div>
-                </div>
-                <span className="font-sans text-sm text-gray-700">Nhà gái</span>
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-wedding-text/70 mb-2">Số người tham dự</label>
-            <select className="w-full border-b border-wine-red/20 bg-transparent py-2 focus:outline-none focus:border-wine-red transition-colors text-sm font-sans cursor-pointer">
-              <option value="1">1 người</option>
-              <option value="2">2 người</option>
-              <option value="3">3 người</option>
-              <option value="4">4 người</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block font-sans text-[10px] uppercase tracking-[0.2em] text-wedding-text/70 mb-2">Lời chúc tới cô dâu chú rể</label>
-            <textarea 
-              rows={2}
-              className="w-full border-b border-wine-red/20 bg-transparent py-2 focus:outline-none focus:border-wine-red transition-colors resize-none text-sm font-sans"
-              placeholder="Nhập lời chúc..."
-            ></textarea>
-          </div>
-
-          <div className="pt-8 h-16">
-            <AnimatePresence mode="wait">
-              {!isSubmitting && !isSuccess && (
-                <motion.button 
-                  key="submit"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  type="submit"
-                  className="w-full bg-wine-red text-ivory py-4 rounded-sm font-sans tracking-[0.2em] text-xs uppercase hover:bg-wine-dark transition-colors shadow-lg active:scale-[0.98]"
-                >
-                  Gửi Xác Nhận
-                </motion.button>
-              )}
-              {isSubmitting && (
-                <motion.div 
-                  key="loading"
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="w-full h-full flex items-center justify-center text-wine-red"
-                >
-                  <div className="w-6 h-6 border-2 border-wine-red/20 border-t-wine-red rounded-full animate-spin"></div>
-                </motion.div>
-              )}
-              {isSuccess && (
-                <motion.div 
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-                  className="w-full h-full flex items-center justify-center text-wine-dark font-sans text-xs tracking-[0.2em] uppercase"
-                >
-                  Cảm ơn bạn!
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          <button 
+            type="button" 
+            className="w-full bg-white text-[#801323] font-serif font-bold tracking-widest uppercase py-4 rounded-full mt-6 hover:bg-white/90 transition-colors shadow-lg"
+          >
+            Gửi lời chúc & xác nhận
+          </button>
         </motion.form>
-      </motion.div>
+      </div>
     </section>
   );
 }

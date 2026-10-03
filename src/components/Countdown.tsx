@@ -23,21 +23,20 @@ export default function Countdown() {
     return { timeLeft, difference };
   };
 
-  const [{ timeLeft, difference }, setTimeLeft] = useState(calculateTimeLeft());
+  const [{ timeLeft, difference }, setTimeLeft] = useState(() => calculateTimeLeft());
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearTimeout(timer);
-  });
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
 
   const pad = (num: number, digits = 2) => num.toString().padStart(digits, '0');
 
   return (
     <section className="bg-wine-dark text-ivory py-16 px-6 text-center relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <img src={wedding.photos.photo1} alt="bg" className="w-full h-full object-cover blur-sm" />
+        <img src={wedding.photos.photo1} alt="bg" loading="lazy" decoding="async" className="w-full h-full object-cover blur-sm" />
       </div>
       
       <motion.div

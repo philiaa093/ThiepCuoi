@@ -1,53 +1,53 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
-import { staggerContainer, staggerText } from '../lib/animations';
 
 export default function ThankYou() {
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-end justify-center text-center pb-24 px-6">
-      <motion.div 
-        initial={{ scale: 1.04 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="absolute inset-0 w-full h-full will-change-transform"
-      >
-        <img 
-          src={wedding.photos.photo2} 
-          alt="Thank You" 
-          className="w-full h-full object-cover"
-          style={{ objectPosition: wedding.photos.position.thankYou }}
-          loading="lazy"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-wine-dark/90 via-wine-dark/40 to-transparent"></div>
-      </motion.div>
-      
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative z-10 text-wedding-white"
-      >
-        <motion.h2 variants={staggerText} className="font-handwriting text-5xl md:text-6xl mb-10 text-ivory/90">Thank You</motion.h2>
-        
-        <motion.p variants={staggerText} className="font-sans text-sm font-light leading-loose max-w-[280px] mx-auto mb-16 opacity-80 tracking-wide">
-          Cảm ơn bạn đã dành thời gian<br/>
-          chung vui trong ngày đặc biệt<br/>
-          của chúng mình.
-        </motion.p>
-
-        <motion.div variants={staggerText} className="font-serif tracking-widest text-xl mb-6">
-          <p>{wedding.groom.name.toUpperCase()}</p>
-          <p className="text-xl my-2 font-light opacity-80">&</p>
-          <p>{wedding.bride.name.toUpperCase()}</p>
+    <section className="py-16 px-6">
+      <div className="max-w-md mx-auto text-center flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.97 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-sm aspect-[4/3] mb-8"
+        >
+          <img 
+            src={wedding.photos.photo2} 
+            alt="Thank You" 
+            className="w-full h-full object-cover rounded-md shadow-2xl"
+            style={{ objectPosition: wedding.photos.position.thankYou }}
+            loading="lazy" decoding="async"
+          />
         </motion.div>
 
-        <motion.p variants={staggerText} className="font-sans text-[10px] tracking-[0.3em] opacity-60">
-          {wedding.mainDate.substring(8,10)}.{wedding.mainDate.substring(5,7)}.{wedding.mainDate.substring(0,4)}
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-script text-6xl text-white mb-6"
+        >
+          Lời cảm ơn!
+        </motion.h2>
+
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="font-serif text-sm text-white/90 leading-relaxed mb-16"
+        >
+          Cảm ơn quý khách đã dành tình cảm cho gia đình chúng tôi. Sự hiện diện của quý khách chính là món quà vô giá, là niềm vinh hạnh lớn nhất của gia đình chúng tôi. Xin chân thành cảm ơn và kính chúc quý khách sức khỏe, hạnh phúc!
         </motion.p>
-      </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-[10px] uppercase tracking-widest text-white/60 mb-8"
+        >
+          Thiệp cưới online Hữu Thuận & Thu Trang
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Media & Assets
-public/images/*
-public/audio/*
+# Source material not shipped with website
 TaiNguyen/
+
+.vercel

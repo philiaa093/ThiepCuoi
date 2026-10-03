@@ -21,7 +21,7 @@ export default {
       fontFamily: {
         serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
         sans: ['"Be Vietnam Pro"', 'sans-serif'],
-        handwriting: ['"Great Vibes"', 'cursive'], 
+        script: ['"Great Vibes"', 'cursive'], 
       }
     },
   },

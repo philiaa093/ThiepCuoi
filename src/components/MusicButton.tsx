@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Disc3, Play } from 'lucide-react';
+import { Music, Play } from 'lucide-react';
 import { wedding } from '../data/wedding';
 
 export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlaying: (val: boolean) => void }) {
@@ -21,10 +21,10 @@ export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: bo
   return (
     <button
       onClick={() => setIsPlaying(!isPlaying)}
-      className="fixed top-6 right-6 z-40 w-10 h-10 bg-ivory rounded-full shadow-lg flex items-center justify-center text-wine-red"
+      className={`fixed bottom-6 right-6 z-40 w-12 h-12 bg-[#801323] border border-[#B59762] rounded-full shadow-lg flex items-center justify-center text-[#B59762] hover:scale-105 transition-transform ${isPlaying ? 'animate-[spin_3s_linear_infinite]' : ''}`}
     >
       {isPlaying ? (
-        <Disc3 className="w-6 h-6 animate-[spin_3s_linear_infinite]" />
+        <Music className="w-5 h-5" />
       ) : (
         <Play className="w-5 h-5 ml-1" />
       )}

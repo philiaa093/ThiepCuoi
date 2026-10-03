@@ -1,46 +1,62 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
-import { fadeUp, staggerContainer } from '../lib/animations';
+import { Divider, FlowerOrnament } from './Decorations';
 
 export default function Family() {
   return (
-    <section className="bg-ivory py-24 px-6 relative overflow-hidden">
-      {/* Decorative floral/line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-wine-red/30 to-transparent"></div>
-      
-      {/* Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-wine-red opacity-5 pointer-events-none">
-        <span className="font-serif text-[200px] leading-none">囍</span>
+    <section className="py-20 px-6">
+      <div className="max-w-md mx-auto flex flex-col items-center text-center relative">
+        <FlowerOrnament className="absolute -top-10 -right-6 opacity-30" delay={0.2} />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 w-full"
+        >
+          <h3 className="font-serif text-sm tracking-[0.2em] text-white uppercase mb-4">
+            TRÂN TRỌNG KÍNH MỜI
+          </h3>
+          <p className="font-script text-5xl mb-4 text-white">Quý Khách</p>
+          <p className="font-serif text-xs uppercase tracking-[0.2em] text-white/80 mb-6 leading-relaxed px-4">
+            TỚI DỰ BỮA CƠM THÂN MẬT CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI
+          </p>
+          <p className="font-script text-[3.5rem] leading-none text-white">{wedding.groom.shortName}</p>
+          <p className="font-script text-2xl text-white my-1">&</p>
+          <p className="font-script text-[3.5rem] leading-none text-white">{wedding.bride.shortName}</p>
+        </motion.div>
+
+        <div className="flex flex-col w-full space-y-12 relative mt-4">
+          <FlowerOrnament className="absolute top-1/2 left-0 -translate-y-1/2 opacity-20 w-12 h-12" delay={0.4} />
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center w-full flex flex-col items-center"
+          >
+            <h3 className="font-serif text-lg text-white uppercase tracking-[0.2em] mb-2">NHÀ GÁI</h3>
+            <Divider className="text-white/40 mb-4 w-32" />
+            <p className="font-serif text-sm text-white/90 uppercase tracking-widest mb-1">{wedding.bride.father}</p>
+            <p className="font-serif text-sm text-white/90 uppercase tracking-widest">{wedding.bride.mother}</p>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center w-full flex flex-col items-center"
+          >
+            <h3 className="font-serif text-lg text-white uppercase tracking-[0.2em] mb-2">NHÀ TRAI</h3>
+            <Divider className="text-white/40 mb-4 w-32" />
+            <p className="font-serif text-sm text-white/90 uppercase tracking-widest mb-1">{wedding.groom.father}</p>
+            <p className="font-serif text-sm text-white/90 uppercase tracking-widest">{wedding.groom.mother}</p>
+          </motion.div>
+        </div>
       </div>
-      
-      <motion.div 
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="max-w-md mx-auto relative z-10 flex flex-col gap-20 text-center"
-      >
-        {/* Groom's Family */}
-        <motion.div variants={fadeUp} className="flex flex-col items-center">
-          <h3 className="font-serif text-sm tracking-[0.3em] text-wine-dark mb-8 uppercase">Đại diện nhà trai</h3>
-          <div className="font-sans text-wedding-text leading-loose">
-            <p className="mb-2"><span className="text-xs tracking-widest text-gray-400 uppercase mr-3">Bà</span><span className="font-serif text-xl">{wedding.groom.mother}</span></p>
-            <p className="text-[11px] mt-6 tracking-widest uppercase text-wine-red/80 max-w-[200px] mx-auto leading-relaxed border-t border-wine-red/20 pt-4">{wedding.groom.address}</p>
-          </div>
-        </motion.div>
-
-        <div className="w-12 h-px bg-wine-red/20 mx-auto"></div>
-
-        {/* Bride's Family */}
-        <motion.div variants={fadeUp} className="flex flex-col items-center">
-          <h3 className="font-serif text-sm tracking-[0.3em] text-wine-dark mb-8 uppercase">Đại diện nhà gái</h3>
-          <div className="font-sans text-wedding-text leading-loose">
-            <p className="mb-2"><span className="text-xs tracking-widest text-gray-400 uppercase mr-3">Ông</span><span className="font-serif text-xl">{wedding.bride.father}</span></p>
-            <p className="mb-2"><span className="text-xs tracking-widest text-gray-400 uppercase mr-3">Bà</span><span className="font-serif text-xl">{wedding.bride.mother}</span></p>
-            <p className="text-[11px] mt-6 tracking-widest uppercase text-wine-red/80 max-w-[200px] mx-auto leading-relaxed border-t border-wine-red/20 pt-4">{wedding.bride.address}</p>
-          </div>
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

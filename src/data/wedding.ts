@@ -1,11 +1,14 @@
 export const wedding = {
   groom: {
     name: "Hữu Thuận",
+    shortName: "Hữu Thuận",
+    father: "Hữu Thuận",
     mother: "Lê Thị Thảo",
     address: "Ngõ 7 - TDP Đông Xuân, Đông Sơn - Thanh Hóa"
   },
   bride: {
     name: "Thu Trang",
+    shortName: "Thu Trang",
     father: "Tạ Xuân Thanh",
     mother: "Lê Thị Hương",
     address: "SN 76 - TDP Rừng Thông, Đông Sơn - Thanh Hóa"
@@ -59,5 +62,5 @@ export const wedding = {
     groom: null,
     bride: null
   },
-  music: "/audio/wedding.mp3"
+  music: "/audio/wedding-80.mp3"
 };
