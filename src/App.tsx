@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
+import { MotionConfig } from 'framer-motion';
 import InvitationGate from './components/InvitationGate';
 import Hero from './components/Hero';
 import Family from './components/Family';
@@ -31,16 +31,7 @@ function App() {
       <div className="relative min-h-screen bg-[#801323] flex justify-center selection:bg-white selection:text-[#801323]">
         <div className="w-full max-w-[430px] bg-[#801323] shadow-2xl relative min-h-screen overflow-x-hidden">
           
-          <AnimatePresence mode="wait">
-            {!isOpen && (
-              <motion.div 
-                key="gate"
-                className="absolute inset-0 z-50 h-screen"
-              >
-                <InvitationGate onOpen={handleOpen} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {!isOpen && <InvitationGate onOpen={handleOpen} />}
           
           <div className={`w-full ${!isOpen ? 'h-screen overflow-hidden' : ''}`}>
             <MusicButton isPlaying={isMusicPlaying} setIsPlaying={setIsMusicPlaying} />

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
 import { FlowerOrnament } from './Decorations';
 
@@ -16,17 +15,11 @@ export default function WeddingTimeline() {
   return (
     <section className="py-16 px-6">
       <div className="max-w-md mx-auto relative flex flex-col space-y-12">
-        <FlowerOrnament className="absolute -top-10 -left-6 opacity-30 w-12 h-12" delay={0.2} />
+        <FlowerOrnament className="absolute -top-10 -left-6 opacity-30 w-12 h-12" />
         
-        {/* Event 1 (Lễ Thành Hôn) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="border border-white/20 p-8 text-center relative bg-[#801323]"
-        >
-          {/* Corner borders for premium feel */}
+        {/* Event 1 (Lễ Thành Hôn): enters purely with page scroll as observed in MOTION_SPEC.md */}
+        <div className="border border-white/20 p-8 text-center relative bg-[#801323]">
+          {/* Corner borders */}
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white/60"></div>
           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white/60"></div>
           <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white/60"></div>
@@ -66,23 +59,17 @@ export default function WeddingTimeline() {
             <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
             XEM BẢN ĐỒ
           </a>
-        </motion.div>
+        </div>
 
-        {/* Event 2 (Bữa Cơm Thân Mật) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="border border-white/20 p-8 text-center relative bg-[#801323]"
-        >
-          {/* Corner borders for premium feel */}
+        {/* Event 2 (Tiệc Nhà Gái / Bữa Cơm Thân Mật) */}
+        <div className="border border-white/20 p-8 text-center relative bg-[#801323]">
+          {/* Corner borders */}
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white/60"></div>
           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white/60"></div>
           <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white/60"></div>
           <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/60"></div>
 
-          <FlowerOrnament className="absolute -bottom-6 -right-6 opacity-40 w-16 h-16" delay={0.4} />
+          <FlowerOrnament className="absolute -bottom-6 -right-6 opacity-40 w-16 h-16" />
 
           <h3 className="font-serif text-[22px] uppercase tracking-[0.2em] text-[#D4AF37] mb-2">{wedding.events[1].title}</h3>
           <p className="font-sans text-[10px] tracking-widest text-white/90 uppercase mb-6">
@@ -117,7 +104,7 @@ export default function WeddingTimeline() {
             <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
             XEM BẢN ĐỒ
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

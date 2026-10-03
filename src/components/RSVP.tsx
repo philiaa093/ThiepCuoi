@@ -1,26 +1,13 @@
-import { motion } from 'framer-motion';
-
 export default function RSVP() {
   return (
     <section className="py-16 px-6">
       <div className="max-w-md mx-auto text-center">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="font-sans text-xs uppercase tracking-widest text-white/90 mb-10 leading-relaxed"
-        >
+        {/* RSVP text and form enter purely with document scroll per MOTION_SPEC.md */}
+        <p className="font-sans text-xs uppercase tracking-widest text-white/90 mb-10 leading-relaxed">
           Hãy xác nhận sự có mặt của quý khách để gia đình chúng tôi chuẩn bị đón tiếp một cách chu đáo nhất. Trân trọng!
-        </motion.p>
+        </p>
 
-        <motion.form 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="space-y-4 mb-8"
-        >
+        <form className="space-y-4 mb-8">
           <input 
             type="text" 
             placeholder="Tên của bạn là gì?" 
@@ -51,7 +38,7 @@ export default function RSVP() {
           >
             Gửi lời chúc & xác nhận
           </button>
-        </motion.form>
+        </form>
       </div>
     </section>
   );

@@ -1,18 +1,16 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { fadeUp, staggerContainer, staggerText } from '../lib/animations';
 
 export default function Invitation() {
-  const [guestName, setGuestName] = useState('Bạn và gia đình');
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const guest = params.get('guest');
-    if (guest) {
-      setGuestName(guest);
+  const [guestName] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('guest') || 'Bạn và gia đình';
     }
-  }, []);
+    return 'Bạn và gia đình';
+  });
 
   return (
     <section className="bg-wedding-white py-32 px-8 flex justify-center text-center relative overflow-hidden">

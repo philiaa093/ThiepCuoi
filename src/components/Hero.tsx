@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
 
 export default function Hero() {
@@ -38,14 +39,23 @@ export default function Hero() {
           <p className="font-serif text-lg tracking-[0.2em] text-white">14 . 06 . 2026</p>
         </div>
 
-        <div className="w-full max-w-[280px] aspect-[3/4] relative">
+        {/* First large portrait: emerges from burgundy background via 0.8s opacity reveal */}
+        <motion.div 
+          className="w-full max-w-[280px] aspect-[3/4] relative bg-[#801323] rounded-xl overflow-hidden shadow-2xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.80, ease: "easeOut" }}
+        >
           <img 
             src={wedding.photos.photo1}
             alt="Couple secondary" 
-            className="w-full h-full object-cover rounded-xl shadow-2xl"
+            className="w-full h-full object-cover"
             style={{ objectPosition: wedding.photos.position.saveTheDate }}
+            loading="lazy"
+            decoding="async"
           />
-        </div>
+        </motion.div>
       </section>
     </>
   );
