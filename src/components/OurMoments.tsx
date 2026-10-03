@@ -1,62 +1,77 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
+import { staggerContainer, fadeUp, imageReveal, slideLeft, slideRight } from '../lib/animations';
 
 export default function OurMoments() {
-  const animations = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.8 }
-  };
-
   return (
-    <section className="bg-wedding-white py-24 px-6">
-      <motion.div {...animations} className="text-center mb-12">
-        <h2 className="font-handwriting text-4xl text-wine-red mb-2">Our Moments</h2>
-        <p className="font-serif tracking-widest text-wedding-text">KHOẢNH KHẮC ĐÁNG NHỚ</p>
+    <section className="bg-ivory py-32 px-6">
+      <motion.div 
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="text-center mb-16"
+      >
+        <motion.h2 variants={fadeUp} className="font-handwriting text-5xl text-wine-dark mb-4">Our Moments</motion.h2>
+        <motion.p variants={fadeUp} className="font-sans text-[10px] tracking-[0.3em] uppercase text-wedding-text/60">Khoảnh Khắc Đáng Nhớ</motion.p>
       </motion.div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-8 max-w-md mx-auto">
         {/* Row 1 */}
         <div className="flex gap-4 h-64">
-          <motion.div {...animations} className="flex-1 overflow-hidden">
-            <img 
-              src={wedding.photos.photo1} 
-              alt="Moment 1" 
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
+            className="flex-1 overflow-hidden"
+          >
+            <motion.img 
+              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+              src={wedding.photos.photo1} alt="Moment 1" 
               className="w-full h-full object-cover object-[50%_20%]"
             />
           </motion.div>
-          <motion.div {...animations} transition={{ delay: 0.2, duration: 0.8 }} className="flex-1 overflow-hidden">
-            <img 
-              src={wedding.photos.photo2} 
-              alt="Moment 2" 
-              className="w-full h-full object-cover object-[80%_30%] grayscale-[30%]"
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
+            className="flex-1 overflow-hidden"
+          >
+            <motion.img 
+              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+              src={wedding.photos.photo2} alt="Moment 2" 
+              className="w-full h-full object-cover object-[80%_30%] grayscale-[20%]"
             />
           </motion.div>
         </div>
 
         {/* Row 2 - Full width */}
-        <motion.div {...animations} transition={{ delay: 0.1, duration: 0.8 }} className="h-48 overflow-hidden">
-          <img 
-            src={wedding.photos.photo1} 
-            alt="Moment 3" 
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal} 
+          className="h-56 overflow-hidden"
+        >
+          <motion.img 
+            whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+            src={wedding.photos.photo1} alt="Moment 3" 
             className="w-full h-full object-cover object-[50%_10%]"
           />
         </motion.div>
 
         {/* Row 3 */}
         <div className="flex gap-4 h-72">
-          <motion.div {...animations} className="w-2/3 overflow-hidden">
-            <img 
-              src={wedding.photos.photo2} 
-              alt="Moment 4" 
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
+            className="w-2/3 overflow-hidden"
+          >
+            <motion.img 
+              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+              src={wedding.photos.photo2} alt="Moment 4" 
               className="w-full h-full object-cover object-center"
             />
           </motion.div>
-          <motion.div {...animations} transition={{ delay: 0.2, duration: 0.8 }} className="w-1/3 overflow-hidden">
-            <img 
-              src={wedding.photos.photo1} 
-              alt="Moment 5" 
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
+            className="w-1/3 overflow-hidden"
+          >
+            <motion.img 
+              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+              src={wedding.photos.photo1} alt="Moment 5" 
               className="w-full h-full object-cover object-[30%_10%]"
             />
           </motion.div>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
 import { useEffect, useState } from 'react';
+import { fadeUp, staggerContainer, staggerText } from '../lib/animations';
 
 export default function Invitation() {
   const [guestName, setGuestName] = useState('Bạn và gia đình');
@@ -14,46 +15,42 @@ export default function Invitation() {
   }, []);
 
   return (
-    <section className="bg-ivory py-24 px-8 flex justify-center text-center relative overflow-hidden">
-      {/* Decorative corners */}
-      <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-wine-red opacity-50"></div>
-      <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-wine-red opacity-50"></div>
-      <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-wine-red opacity-50"></div>
-      <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-wine-red opacity-50"></div>
-
+    <section className="bg-wedding-white py-32 px-8 flex justify-center text-center relative overflow-hidden">
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1 }}
-        className="w-full max-w-sm"
+        className="w-full max-w-sm relative z-10"
       >
-        <div className="text-wine-red text-4xl mb-8 font-serif">囍</div>
+        <motion.div variants={fadeUp} className="text-wine-red text-5xl mb-12 font-serif opacity-90">囍</motion.div>
         
-        <p className="font-serif text-lg tracking-[0.15em] text-wine-red mb-8">TRÂN TRỌNG KÍNH MỜI</p>
+        <motion.p variants={staggerText} className="font-sans text-[10px] tracking-[0.3em] uppercase text-wine-dark mb-8">
+          Trân trọng kính mời
+        </motion.p>
         
-        <h2 className="font-handwriting text-3xl md:text-4xl text-wedding-text mb-8 px-4">
+        <motion.h2 variants={staggerText} className="font-handwriting text-4xl md:text-5xl text-wedding-text mb-12 px-4 leading-tight">
           {guestName}
-        </h2>
+        </motion.h2>
         
-        <p className="font-sans text-sm font-light leading-loose text-wedding-text mb-8">
+        <motion.p variants={staggerText} className="font-sans text-sm font-light leading-loose text-gray-600 mb-10">
           Tới dự bữa cơm thân mật<br/>
           chung vui mừng
-        </p>
+        </motion.p>
 
-        <h3 className="font-serif text-2xl tracking-[0.2em] text-wine-red mb-6">
+        <motion.h3 variants={staggerText} className="font-serif text-2xl tracking-[0.2em] text-wine-red mb-8">
           LỄ THÀNH HÔN
-        </h3>
+        </motion.h3>
 
-        <p className="font-sans text-sm font-light text-wedding-text mb-6">
+        <motion.p variants={staggerText} className="font-sans text-sm font-light text-gray-600 mb-8">
           của chúng tôi
-        </p>
+        </motion.p>
 
-        <div className="font-serif text-2xl text-wedding-text tracking-widest leading-relaxed">
+        <motion.div variants={staggerText} className="font-serif text-2xl text-wedding-text tracking-widest leading-relaxed">
           <p>{wedding.groom.name.toUpperCase()}</p>
-          <p className="text-wine-red text-lg my-1">&</p>
+          <p className="text-wine-red text-sm my-3 italic">&</p>
           <p>{wedding.bride.name.toUpperCase()}</p>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

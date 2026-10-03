@@ -1,61 +1,70 @@
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
 import { wedding } from '../data/wedding';
+import { staggerContainer, fadeUp } from '../lib/animations';
 
 export default function Venue() {
   return (
-    <section className="bg-ivory py-20 px-6">
+    <section className="bg-wedding-white py-32 px-6">
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
         className="max-w-md mx-auto text-center"
       >
-        <h2 className="font-serif text-3xl tracking-widest text-wine-red mb-16">ĐỊA ĐIỂM</h2>
+        <motion.h2 variants={fadeUp} className="font-sans text-[10px] tracking-[0.4em] uppercase text-wine-red mb-24">Địa Điểm Tổ Chức</motion.h2>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-24 relative">
+          {/* Decorative Divider */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 opacity-20 pointer-events-none text-wine-red font-serif text-2xl">
+            囍
+          </div>
+
           {/* Groom's Venue */}
-          <div className="bg-wedding-white p-8 shadow-md border-t-4 border-wine-red">
-            <MapPin className="w-8 h-8 text-wine-red mx-auto mb-4" />
-            <h3 className="font-serif text-xl tracking-[0.2em] text-wine-dark mb-4">NHÀ TRAI</h3>
-            <p className="font-sans text-wedding-text mb-6 leading-relaxed">
+          <motion.div variants={fadeUp} className="flex flex-col items-center">
+            <h3 className="font-serif text-2xl tracking-[0.2em] text-wine-dark mb-6">NHÀ TRAI</h3>
+            <p className="font-sans text-xs tracking-widest text-wedding-text/80 mb-8 max-w-[200px] leading-loose uppercase">
               {wedding.groom.address}
             </p>
             <a 
               href={wedding.maps.groom || '#'} 
               target={wedding.maps.groom ? "_blank" : "_self"}
               rel="noopener noreferrer"
+              className={!wedding.maps.groom ? "pointer-events-none" : ""}
             >
               <button 
                 disabled={!wedding.maps.groom}
-                className="bg-ivory border border-wine-red text-wine-red px-6 py-2 text-sm tracking-widest font-sans uppercase hover:bg-wine-red hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative px-8 py-3 text-[10px] tracking-[0.2em] font-sans uppercase text-wine-red transition-all disabled:opacity-30"
               >
-                XEM BẢN ĐỒ
+                <span className="relative z-10 group-hover:text-wedding-white transition-colors duration-300">Xem Bản Đồ</span>
+                <div className="absolute inset-0 border border-wine-red/30 group-hover:bg-wine-red transition-all duration-300"></div>
               </button>
             </a>
-          </div>
+          </motion.div>
+
+          <div className="w-px h-16 bg-wine-red/10 mx-auto"></div>
 
           {/* Bride's Venue */}
-          <div className="bg-wedding-white p-8 shadow-md border-t-4 border-wine-red">
-            <MapPin className="w-8 h-8 text-wine-red mx-auto mb-4" />
-            <h3 className="font-serif text-xl tracking-[0.2em] text-wine-dark mb-4">NHÀ GÁI</h3>
-            <p className="font-sans text-wedding-text mb-6 leading-relaxed">
+          <motion.div variants={fadeUp} className="flex flex-col items-center">
+            <h3 className="font-serif text-2xl tracking-[0.2em] text-wine-dark mb-6">NHÀ GÁI</h3>
+            <p className="font-sans text-xs tracking-widest text-wedding-text/80 mb-8 max-w-[200px] leading-loose uppercase">
               {wedding.bride.address}
             </p>
             <a 
               href={wedding.maps.bride || '#'} 
               target={wedding.maps.bride ? "_blank" : "_self"}
               rel="noopener noreferrer"
+              className={!wedding.maps.bride ? "pointer-events-none" : ""}
             >
               <button 
                 disabled={!wedding.maps.bride}
-                className="bg-ivory border border-wine-red text-wine-red px-6 py-2 text-sm tracking-widest font-sans uppercase hover:bg-wine-red hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative px-8 py-3 text-[10px] tracking-[0.2em] font-sans uppercase text-wine-red transition-all disabled:opacity-30"
               >
-                XEM BẢN ĐỒ
+                <span className="relative z-10 group-hover:text-wedding-white transition-colors duration-300">Xem Bản Đồ</span>
+                <div className="absolute inset-0 border border-wine-red/30 group-hover:bg-wine-red transition-all duration-300"></div>
               </button>
             </a>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

@@ -1,43 +1,49 @@
 import { motion } from 'framer-motion';
 import { wedding } from '../data/wedding';
+import { staggerContainer, staggerText } from '../lib/animations';
 
 export default function ThankYou() {
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center text-center px-6">
-      <motion.img 
-        initial={{ scale: 1.05 }}
+    <section className="relative h-screen w-full overflow-hidden flex items-end justify-center text-center pb-24 px-6">
+      <motion.div 
+        initial={{ scale: 1.1 }}
         whileInView={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        src={wedding.photos.photo2} 
-        alt="Thank You" 
-        className="absolute inset-0 w-full h-full object-cover object-top"
-      />
-      <div className="absolute inset-0 bg-wine-dark/60"></div>
+        transition={{ duration: 3, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <img 
+          src={wedding.photos.photo2} 
+          alt="Thank You" 
+          className="w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-wine-dark/90 via-wine-dark/50 to-transparent"></div>
+      </motion.div>
       
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
         className="relative z-10 text-wedding-white"
       >
-        <h2 className="font-handwriting text-5xl mb-8">Thank You</h2>
+        <motion.h2 variants={staggerText} className="font-handwriting text-5xl md:text-6xl mb-10 text-ivory/90">Thank You</motion.h2>
         
-        <p className="font-sans text-sm font-light leading-relaxed max-w-[280px] mx-auto mb-10 opacity-90">
+        <motion.p variants={staggerText} className="font-sans text-sm font-light leading-loose max-w-[280px] mx-auto mb-16 opacity-80 tracking-wide">
           Cảm ơn bạn đã dành thời gian<br/>
           chung vui trong ngày đặc biệt<br/>
           của chúng mình.
-        </p>
+        </motion.p>
 
-        <div className="font-serif tracking-widest text-lg mb-4">
+        <motion.div variants={staggerText} className="font-serif tracking-widest text-xl mb-6">
           <p>{wedding.groom.name.toUpperCase()}</p>
-          <p className="text-xl my-1">&</p>
+          <p className="text-xl my-2 font-light opacity-80">&</p>
           <p>{wedding.bride.name.toUpperCase()}</p>
-        </div>
+        </motion.div>
 
-        <p className="font-sans text-xs tracking-widest">
+        <motion.p variants={staggerText} className="font-sans text-[10px] tracking-[0.3em] opacity-60">
           {wedding.mainDate.substring(8,10)}.{wedding.mainDate.substring(5,7)}.{wedding.mainDate.substring(0,4)}
-        </p>
+        </motion.p>
       </motion.div>
     </section>
   );

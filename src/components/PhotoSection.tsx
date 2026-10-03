@@ -9,26 +9,31 @@ export default function PhotoSection() {
     offset: ["start end", "end start"]
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   return (
-    <section ref={ref} className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
-      <motion.img 
-        style={{ y }}
-        src={wedding.photos.photo1} 
-        alt="Wedding" 
-        className="absolute inset-0 w-full h-[140%] object-cover object-center"
-      />
-      <div className="absolute inset-0 bg-black/30"></div>
+    <section ref={ref} className="relative h-[85vh] w-full overflow-hidden flex items-center justify-center">
+      <motion.div 
+        style={{ y, scale }}
+        className="absolute inset-0 w-full h-[130%]"
+      >
+        <img 
+          src={wedding.photos.photo1} 
+          alt="Wedding" 
+          className="w-full h-full object-cover object-center"
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-black/40"></div>
       
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative z-10 px-8 text-center"
       >
-        <p className="font-serif text-2xl md:text-3xl text-wedding-white leading-relaxed italic tracking-wider">
+        <p className="font-serif text-2xl md:text-3xl text-wedding-white leading-loose italic tracking-wider font-light">
           "From this day forward, <br/>
           you shall not walk alone."
         </p>

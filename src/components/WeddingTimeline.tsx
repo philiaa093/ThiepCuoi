@@ -1,44 +1,76 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { wedding } from '../data/wedding';
+import { fadeUp } from '../lib/animations';
 
 export default function WeddingTimeline() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section className="bg-wedding-white py-20 px-6">
+    <section ref={containerRef} className="bg-ivory py-24 px-6 overflow-hidden">
       <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
         className="max-w-md mx-auto"
       >
-        <h2 className="font-serif text-3xl tracking-widest text-center text-wine-red mb-16">CHƯƠNG TRÌNH</h2>
+        <motion.h2 variants={fadeUp} className="font-sans text-[10px] tracking-[0.4em] uppercase text-center text-wine-red mb-20">Chương Trình</motion.h2>
 
-        <div className="relative border-l border-wine-red/30 ml-4 md:ml-1/2">
+        <div className="relative pl-8 md:pl-16">
+          {/* Animated Line */}
+          <div className="absolute left-0 top-2 bottom-0 w-[1px] bg-wine-red/10">
+            <motion.div 
+              className="absolute top-0 left-0 w-full bg-wine-red"
+              style={{ height: lineHeight }}
+            ></motion.div>
+          </div>
+
           {wedding.events.map((event, index) => {
             const isMainEvent = index === 2;
+            const number = `0${index + 1}`;
             return (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="mb-12 ml-8 relative"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className={`mb-16 relative ${isMainEvent ? 'mt-8' : ''}`}
               >
+                {/* Large Background Number */}
+                <div className="absolute -left-12 -top-8 text-[80px] font-serif text-wine-red opacity-[0.03] pointer-events-none select-none">
+                  {number}
+                </div>
+
                 {/* Dot */}
-                <div className={`absolute -left-[41px] top-1 rounded-full border-4 border-wedding-white ${isMainEvent ? 'w-5 h-5 bg-wine-red -left-[43px]' : 'w-4 h-4 bg-wine-red/60'}`}></div>
+                <div className="absolute -left-[35.5px] md:-left-[67.5px] top-2">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className={`rounded-full border-2 border-ivory ${isMainEvent ? 'w-4 h-4 bg-wine-red -translate-x-[2px]' : 'w-3 h-3 bg-wine-red/40'}`}
+                  ></motion.div>
+                </div>
                 
-                <div className={isMainEvent ? "bg-ivory p-6 shadow-lg border border-wine-red/20 -mt-4 rounded-sm" : ""}>
-                  <h3 className={`font-serif tracking-widest mb-2 ${isMainEvent ? 'text-2xl text-wine-red' : 'text-xl text-wedding-text'}`}>
+                <div className={isMainEvent ? "relative" : ""}>
+                  <h3 className={`font-serif tracking-[0.15em] mb-3 ${isMainEvent ? 'text-2xl text-wine-red' : 'text-lg text-wedding-text'}`}>
                     {event.title.toUpperCase()}
                   </h3>
                   
-                  <div className="font-sans text-sm text-gray-700 leading-relaxed space-y-1">
-                    <p className={`font-semibold ${isMainEvent ? 'text-wine-red text-base' : ''}`}>{event.time}</p>
-                    {isMainEvent && <p className="uppercase tracking-widest font-medium text-xs mt-2 text-wine-red/80">THỨ NĂM</p>}
-                    <p className={isMainEvent ? 'font-medium' : ''}>{event.date}</p>
-                    <p className="text-xs text-gray-500 italic">Tức {event.lunar}</p>
-                    <p className="pt-2 uppercase tracking-wider text-xs font-semibold text-wine-dark mt-2">{event.venue}</p>
+                  <div className="font-sans text-sm text-gray-600 leading-relaxed space-y-1">
+                    <p className={`font-medium tracking-widest ${isMainEvent ? 'text-wine-dark text-base' : ''}`}>{event.time}</p>
+                    {isMainEvent && <p className="uppercase tracking-[0.2em] font-light text-[10px] mt-2 text-wine-red/70 mb-1">THỨ NĂM</p>}
+                    <p className={isMainEvent ? 'font-serif text-lg text-wedding-text' : 'font-light'}>{event.date}</p>
+                    <p className="text-[11px] text-gray-400 italic">Tức {event.lunar}</p>
+                    <div className="w-8 h-px bg-wine-red/20 my-3"></div>
+                    <p className="uppercase tracking-widest text-[10px] font-medium text-wine-dark">{event.venue}</p>
                   </div>
                 </div>
               </motion.div>
