@@ -14,11 +14,12 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full"
       >
         <img 
-          src={wedding.photos.photo1}
+          src={wedding.photos.photo2}
           alt="Wedding Couple" 
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: wedding.photos.position.hero }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/35"></div>
       </motion.div>
 
       <motion.div 

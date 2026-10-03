@@ -36,7 +36,20 @@ export const wedding = {
   ],
   photos: {
     photo1: "/images/photo-1.jpg",
-    photo2: "/images/photo-2.jpg"
+    photo2: "/images/photo-2.jpg",
+    position: {
+      hero: "53% 32%",
+      saveTheDate: "50% 35%",
+      groom: "72% 25%",
+      bride: "35% 25%",
+      photoSection: "52% 40%",
+      thankYou: "52% 25%",
+      moment1: "35% 30%",
+      moment2: "72% 28%",
+      moment3: "52% 35%",
+      moment4: "34% 30%",
+      moment5: "72% 28%"
+    }
   },
   maps: {
     groom: "",

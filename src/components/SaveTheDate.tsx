@@ -72,9 +72,10 @@ export default function SaveTheDate() {
       >
         <motion.div variants={imageReveal} className="w-full h-[400px] mb-12 overflow-hidden shadow-2xl">
           <img 
-            src={wedding.photos.photo2} 
+            src={wedding.photos.photo1} 
             alt="Couple" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: wedding.photos.position.saveTheDate }}
           />
         </motion.div>
 

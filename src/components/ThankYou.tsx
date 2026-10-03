@@ -15,9 +15,10 @@ export default function ThankYou() {
         <img 
           src={wedding.photos.photo2} 
           alt="Thank You" 
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: wedding.photos.position.thankYou }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-wine-dark/90 via-wine-dark/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-wine-dark/90 via-wine-dark/40 to-transparent"></div>
       </motion.div>
       
       <motion.div 

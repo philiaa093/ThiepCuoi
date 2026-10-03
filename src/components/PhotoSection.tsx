@@ -19,9 +19,10 @@ export default function PhotoSection() {
         className="absolute inset-0 w-full h-[130%]"
       >
         <img 
-          src={wedding.photos.photo1} 
+          src={wedding.photos.photo2} 
           alt="Wedding" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: wedding.photos.position.photoSection }}
         />
       </motion.div>
       <div className="absolute inset-0 bg-black/40"></div>

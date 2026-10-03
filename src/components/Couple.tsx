@@ -23,7 +23,8 @@ export default function Couple() {
             <img 
               src={wedding.photos.photo2} 
               alt="Groom" 
-              className="w-full h-full object-cover object-[70%_20%]"
+              className="w-full h-full object-cover scale-110 origin-center"
+              style={{ objectPosition: wedding.photos.position.groom }}
             />
           </motion.div>
           <motion.div 
@@ -41,7 +42,8 @@ export default function Couple() {
             <img 
               src={wedding.photos.photo2} 
               alt="Bride" 
-              className="w-full h-full object-cover object-[30%_20%]"
+              className="w-full h-full object-cover scale-110 origin-center"
+              style={{ objectPosition: wedding.photos.position.bride }}
             />
           </motion.div>
           <motion.div 

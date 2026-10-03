@@ -26,7 +26,8 @@ export default function OurMoments() {
             <motion.img 
               whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
               src={wedding.photos.photo1} alt="Moment 1" 
-              className="w-full h-full object-cover object-[50%_20%]"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: wedding.photos.position.moment1 }}
             />
           </motion.div>
           <motion.div 
@@ -36,7 +37,8 @@ export default function OurMoments() {
             <motion.img 
               whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
               src={wedding.photos.photo2} alt="Moment 2" 
-              className="w-full h-full object-cover object-[80%_30%] grayscale-[20%]"
+              className="w-full h-full object-cover grayscale-[20%]"
+              style={{ objectPosition: wedding.photos.position.moment2 }}
             />
           </motion.div>
         </div>
@@ -48,8 +50,9 @@ export default function OurMoments() {
         >
           <motion.img 
             whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
-            src={wedding.photos.photo1} alt="Moment 3" 
-            className="w-full h-full object-cover object-[50%_10%]"
+            src={wedding.photos.photo2} alt="Moment 3" 
+            className="w-full h-full object-cover"
+            style={{ objectPosition: wedding.photos.position.moment3 }}
           />
         </motion.div>
 
@@ -61,8 +64,9 @@ export default function OurMoments() {
           >
             <motion.img 
               whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
-              src={wedding.photos.photo2} alt="Moment 4" 
-              className="w-full h-full object-cover object-center"
+              src={wedding.photos.photo1} alt="Moment 4" 
+              className="w-full h-full object-cover"
+              style={{ objectPosition: wedding.photos.position.moment4 }}
             />
           </motion.div>
           <motion.div 
@@ -71,8 +75,9 @@ export default function OurMoments() {
           >
             <motion.img 
               whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
-              src={wedding.photos.photo1} alt="Moment 5" 
-              className="w-full h-full object-cover object-[30%_10%]"
+              src={wedding.photos.photo2} alt="Moment 5" 
+              className="w-full h-full object-cover"
+              style={{ objectPosition: wedding.photos.position.moment5 }}
             />
           </motion.div>
         </div>

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Disc3, Pause } from 'lucide-react';
+import { Disc3, Play } from 'lucide-react';
 import { wedding } from '../data/wedding';
 
 export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlaying: (val: boolean) => void }) {
@@ -26,7 +26,7 @@ export default function MusicButton({ isPlaying, setIsPlaying }: { isPlaying: bo
       {isPlaying ? (
         <Disc3 className="w-6 h-6 animate-[spin_3s_linear_infinite]" />
       ) : (
-        <Pause className="w-5 h-5" />
+        <Play className="w-5 h-5 ml-1" />
       )}
     </button>
   );
