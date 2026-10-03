@@ -23,22 +23,22 @@ export default function OurMoments() {
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
             className="flex-1 overflow-hidden"
           >
-            <motion.img 
-              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+            <img 
               src={wedding.photos.photo1} alt="Moment 1" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               style={{ objectPosition: wedding.photos.position.moment1 }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
             className="flex-1 overflow-hidden"
           >
-            <motion.img 
-              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+            <img 
               src={wedding.photos.photo2} alt="Moment 2" 
-              className="w-full h-full object-cover grayscale-[20%]"
+              className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
               style={{ objectPosition: wedding.photos.position.moment2 }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
         </div>
@@ -48,11 +48,11 @@ export default function OurMoments() {
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={imageReveal} 
           className="h-56 overflow-hidden"
         >
-          <motion.img 
-            whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+          <img 
             src={wedding.photos.photo2} alt="Moment 3" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
             style={{ objectPosition: wedding.photos.position.moment3 }}
+            loading="lazy" decoding="async"
           />
         </motion.div>
 
@@ -62,22 +62,22 @@ export default function OurMoments() {
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideRight} 
             className="w-2/3 overflow-hidden"
           >
-            <motion.img 
-              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+            <img 
               src={wedding.photos.photo1} alt="Moment 4" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               style={{ objectPosition: wedding.photos.position.moment4 }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideLeft} 
             className="w-1/3 overflow-hidden"
           >
-            <motion.img 
-              whileHover={{ scale: 1.05 }} transition={{ duration: 0.8 }}
+            <img 
               src={wedding.photos.photo2} alt="Moment 5" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               style={{ objectPosition: wedding.photos.position.moment5 }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
         </div>

@@ -76,6 +76,8 @@ export default function SaveTheDate() {
             alt="Couple" 
             className="w-full h-full object-cover"
             style={{ objectPosition: wedding.photos.position.saveTheDate }}
+            loading="lazy"
+            decoding="async"
           />
         </motion.div>
 

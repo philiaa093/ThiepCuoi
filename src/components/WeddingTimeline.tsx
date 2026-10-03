@@ -10,7 +10,7 @@ export default function WeddingTimeline() {
     offset: ["start center", "end center"]
   });
 
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section ref={containerRef} className="bg-ivory py-24 px-6 overflow-hidden">
@@ -26,8 +26,8 @@ export default function WeddingTimeline() {
           {/* Animated Line */}
           <div className="absolute left-0 top-2 bottom-0 w-[1px] bg-wine-red/10">
             <motion.div 
-              className="absolute top-0 left-0 w-full bg-wine-red"
-              style={{ height: lineHeight }}
+              className="absolute top-0 left-0 w-full h-full bg-wine-red origin-top will-change-transform"
+              style={{ scaleY }}
             ></motion.div>
           </div>
 

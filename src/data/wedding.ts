@@ -35,8 +35,8 @@ export const wedding = {
     }
   ],
   photos: {
-    photo1: "/images/photo-1.jpg",
-    photo2: "/images/photo-2.jpg",
+    photo1: "/images/photo-1.webp",
+    photo2: "/images/photo-2.webp",
     position: {
       hero: "53% 32%",
       saveTheDate: "50% 35%",

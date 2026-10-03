@@ -6,17 +6,19 @@ export default function ThankYou() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-end justify-center text-center pb-24 px-6">
       <motion.div 
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.04 }}
         whileInView={{ scale: 1 }}
-        transition={{ duration: 3, ease: "easeOut" }}
+        transition={{ duration: 2, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full will-change-transform"
       >
         <img 
           src={wedding.photos.photo2} 
           alt="Thank You" 
           className="w-full h-full object-cover"
           style={{ objectPosition: wedding.photos.position.thankYou }}
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-wine-dark/90 via-wine-dark/40 to-transparent"></div>
       </motion.div>

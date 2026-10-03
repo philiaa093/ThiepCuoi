@@ -25,6 +25,7 @@ export default function Couple() {
               alt="Groom" 
               className="w-full h-full object-cover scale-110 origin-center"
               style={{ objectPosition: wedding.photos.position.groom }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
           <motion.div 
@@ -44,6 +45,7 @@ export default function Couple() {
               alt="Bride" 
               className="w-full h-full object-cover scale-110 origin-center"
               style={{ objectPosition: wedding.photos.position.bride }}
+              loading="lazy" decoding="async"
             />
           </motion.div>
           <motion.div 

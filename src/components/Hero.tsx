@@ -8,16 +8,17 @@ export default function Hero() {
     <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center">
       {/* Background with slow zoom out */}
       <motion.div
-        initial={{ scale: 1.1 }}
+        initial={{ scale: 1.04 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 8, ease: "easeOut" }}
-        className="absolute inset-0 w-full h-full"
+        transition={{ duration: 4.5, ease: "easeOut" }}
+        className="absolute inset-0 w-full h-full will-change-transform"
       >
         <img 
           src={wedding.photos.photo2}
           alt="Wedding Couple" 
           className="w-full h-full object-cover"
           style={{ objectPosition: wedding.photos.position.hero }}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/35"></div>
       </motion.div>

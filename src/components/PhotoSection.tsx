@@ -9,20 +9,23 @@ export default function PhotoSection() {
     offset: ["start end", "end start"]
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const yDesktop = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
+  const y = isMobile ? 0 : yDesktop;
 
   return (
     <section ref={ref} className="relative h-[85vh] w-full overflow-hidden flex items-center justify-center">
       <motion.div 
-        style={{ y, scale }}
-        className="absolute inset-0 w-full h-[130%]"
+        style={{ y }}
+        className="absolute inset-0 w-full h-[110%] will-change-transform"
       >
         <img 
           src={wedding.photos.photo2} 
           alt="Wedding" 
           className="w-full h-full object-cover"
           style={{ objectPosition: wedding.photos.position.photoSection }}
+          loading="lazy"
+          decoding="async"
         />
       </motion.div>
       <div className="absolute inset-0 bg-black/40"></div>
