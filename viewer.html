@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { font-family: sans-serif; background: #333; color: white; padding: 20px; }
+  img { max-width: 100%; margin-bottom: 20px; border: 1px solid #555; }
+  h2 { color: #ffcc00; }
+</style>
+</head>
+<body>
+  <h1>Wedding Video Contact Sheets</h1>
+  <p>Scroll down to see the entire video chronologically. Each sheet has 25 frames.</p>
+  <script>
+    for (let i = 1; i <= 27; i++) {
+      let num = i.toString().padStart(3, '0');
+      document.write('<h2>Sheet ' + num + '</h2>');
+      document.write('<img src="reference/contact-sheets/sheet_' + num + '.jpg">');
+    }
+  </script>
+</body>
+</html>
